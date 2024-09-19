@@ -25,14 +25,17 @@ plugins {
 
 repositories {
     mavenCentral()
+    maven {
+        url = uri("https://plugins.jetbrains.com/maven")
+    }
 }
 
 intellij {
-    pluginName.set("EmmyLua-AttachDebugger")
+    pluginName.set("EmmyLua2-AttachDebugger")
     version.set("2023.3")
     type.set("IC") // Target IDE Platform
-
-    plugins.set(listOf("com.cppcxy.Intellij-EmmyLua"))
+    sandboxDir.set("${project.buildDir}/idea-sandbox")
+    plugins.set(listOf("com.cppcxy.Intellij-EmmyLua:0.7.1.20-IDEA242"))
 }
 
 val emmyluaDebuggerVersion = "1.8.2"
