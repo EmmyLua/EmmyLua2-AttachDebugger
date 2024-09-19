@@ -29,7 +29,7 @@ repositories {
 
 intellij {
     pluginName.set("EmmyLua-AttachDebugger")
-//    version.set("2023.1")
+    version.set("2023.2")
     type.set("IC") // Target IDE Platform
 
     plugins.set(listOf("com.cppcxy.Intellij-EmmyLua"))
