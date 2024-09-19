@@ -1,0 +1,27 @@
+<idea-plugin>
+    <id>com.cppcxy.emmylua.attach-debugger</id>
+    <name>EmmyLua Attach Debugger</name>
+    <version>2</version>
+    <vendor email="">CppCXY</vendor>
+
+    <description><![CDATA[
+    EmmyLua2 Attach Debugger Plugin for EmmyLua2
+    ]]></description>
+
+    <idea-version since-build="233.3"/>
+
+    <depends>com.intellij.modules.platform</depends>
+    <depends>com.cppcxy</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <xdebugger.attachDebuggerProvider
+                implementation="com.tang.intellij.lua.debugger.emmyAttach.EmmyAttachDebuggerProvider"/>
+
+        <programRunner implementation="com.tang.intellij.lua.debugger.emmyLaunch.EmmyLaunchRunner"/>
+        <configurationType implementation="com.tang.intellij.lua.debugger.emmyLaunch.EmmyLaunchConfigurationType"/>
+
+        <programRunner implementation="com.tang.intellij.lua.debugger.emmyAttach.EmmyAttachRunner"/>
+        <configurationType implementation="com.tang.intellij.lua.debugger.emmyAttach.EmmyAttachConfigurationType"/>
+    </extensions>
+
+</idea-plugin>
