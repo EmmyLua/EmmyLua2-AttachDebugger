@@ -18,16 +18,13 @@ import de.undercouch.gradle.tasks.download.*
 
 plugins {
     id("java")
-    id("org.jetbrains.kotlin.jvm") version "1.7.20"
-    id("org.jetbrains.intellij") version "1.13.2"
+    id("org.jetbrains.kotlin.jvm") version "2.0.0-Beta4"
+    id("org.jetbrains.intellij") version "1.17.2"
     id("de.undercouch.download").version("5.3.0")
 }
 
 repositories {
     mavenCentral()
-    maven {
-        url = uri("https://plugins.jetbrains.com/maven")
-    }
 }
 
 intellij {
