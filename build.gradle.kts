@@ -29,7 +29,7 @@ repositories {
 
 intellij {
     pluginName.set("EmmyLua-AttachDebugger")
-    version.set("2023.2")
+    version.set("2023.3")
     type.set("IC") // Target IDE Platform
 
     plugins.set(listOf("com.cppcxy.Intellij-EmmyLua"))
@@ -78,7 +78,7 @@ tasks {
     }
 
     patchPluginXml {
-        sinceBuild.set("232")
+        sinceBuild.set("233")
     }
 
     signPlugin {
