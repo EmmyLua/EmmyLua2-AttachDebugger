@@ -105,7 +105,7 @@ tasks {
     // Set the JVM compatibility versions
     withType<JavaCompile> {
         sourceCompatibility = "17"
-        targetCompatibility = "21"
+        targetCompatibility = "17"
     }
     withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
         kotlinOptions.jvmTarget = buildVersionData.jvmTarget
