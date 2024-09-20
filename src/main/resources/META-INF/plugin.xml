@@ -1,11 +1,17 @@
 <idea-plugin>
-    <id>com.cppcxy.emmylua.attach-debugger</id>
+    <id>com.cppcxy.emmylua2.attach-debugger</id>
     <name>EmmyLua Attach Debugger</name>
     <version>2</version>
     <vendor email="">CppCXY</vendor>
 
     <description><![CDATA[
-    EmmyLua2 Attach Debugger Plugin for EmmyLua2
+    EmmyLua2 Attach Debugger Plugin for EmmyLua2. This plugin provides attach debugger functionality specifically for EmmyLua2 and is available for Windows only.
+
+    <h2>Features</h2>
+    <ul>
+        <li>Attach debugger support for EmmyLua2</li>
+        <li>Windows-only compatibility</li>
+    </ul>
     ]]></description>
 
     <idea-version since-build="233.3"/>
