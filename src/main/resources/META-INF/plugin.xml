@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>com.cppcxy.emmylua2.attach-debugger</id>
-    <name>EmmyLua Attach Debugger</name>
-    <version>2</version>
+    <name>EmmyLua2 Attach Debugger</name>
+    <version>2.0.0</version>
     <vendor email="">CppCXY</vendor>
 
     <description><![CDATA[
@@ -17,7 +17,7 @@
     <idea-version since-build="233.3"/>
 
     <depends>com.intellij.modules.platform</depends>
-    <depends>com.cppcxy</depends>
+    <depends>com.cppcxy.Intellij-EmmyLua</depends>
 
     <extensions defaultExtensionNs="com.intellij">
         <xdebugger.attachDebuggerProvider
