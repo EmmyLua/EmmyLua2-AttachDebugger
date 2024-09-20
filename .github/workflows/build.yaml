@@ -13,8 +13,8 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      CI: true
       CI_BUILD_VERSION: 1.1.${{ github.run_number }}
+      RUNNER_NUMBER: ${{ github.run_number }}
 
     steps:
       - name: Checkout
