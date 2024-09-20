@@ -48,17 +48,18 @@ class EmmyAttachGroup : XAttachProcessPresentationGroup {
     }
 
     override fun getItemIcon(project: Project, processInfo: ProcessInfo, userDataHolder: UserDataHolder): Icon {
-        val map = userDataHolder.getUserData(EmmyAttachDebuggerProvider.DETAIL_KEY)
-        if (map != null) {
-            val detail = map[processInfo.pid]
-            if (detail != null) {
-                val file = File(detail.path)
-                if (file.exists()) {
-                    val sf = FileSystemView.getFileSystemView()
-                    return sf.getSystemIcon(file)
-                }
-            }
-        }
+        // JDK21 BUG: getSystemIcon throw a error
+//        val map = userDataHolder.getUserData(EmmyAttachDebuggerProvider.DETAIL_KEY)
+//        if (map != null) {
+//            val detail = map[processInfo.pid]
+//            if (detail != null) {
+//                val file = File(detail.path)
+//                if (file.exists()) {
+//                    val sf = FileSystemView.getFileSystemView()
+//                    return sf.getSystemIcon(file)
+//                }
+//            }
+//        }
         return LuaIcons.FILE
     }
 
