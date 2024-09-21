@@ -10,7 +10,7 @@ import java.io.File
 object FileUtils {
     private val pluginVirtualDirectory: VirtualFile?
         get() {
-            val descriptor = PluginManagerCore.getPlugin(PluginId.getId("com.tang.emmylua.attach-debugger"))
+            val descriptor = PluginManagerCore.getPlugin(PluginId.getId("com.cppcxy.emmylua2.attach-debugger"))
             if (descriptor != null) {
                 val pluginPath = descriptor.path
 
