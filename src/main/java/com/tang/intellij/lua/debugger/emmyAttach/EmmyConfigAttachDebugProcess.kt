@@ -77,7 +77,7 @@ class EmmyConfigAttachDebugProcess(
         while (port > 0xffff) port -= 0xffff
         while (port < 0x400) port += 0x400
 
-        val transporter = SocketClientTransporter("localhost", port)
+        val transporter = SocketClientTransporter("::1", port)
         transporter.handler = this
         transporter.logger = this
         this.transporter = transporter
