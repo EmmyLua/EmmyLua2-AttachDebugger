@@ -40,7 +40,7 @@ class EmmyLaunchDebugProcess(
 
     private fun attachTo(pid: Int) {
         val port = getPort(pid)
-        val transporter = SocketClientTransporter("localhost", port)
+        val transporter = SocketClientTransporter("::1", port)
         transporter.handler = this
         transporter.logger = this
         this.transporter = transporter
