@@ -147,7 +147,7 @@ class EmmyLaunchDebugProcess(
                 "-exe",
                 "\"${configuration.program}\"",
                 "-args",
-                "\"${configuration.parameter}\""
+                "${configuration.parameter}"
             )
 
             charset = Charset.forName("utf8")
