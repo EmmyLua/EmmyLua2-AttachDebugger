@@ -10,13 +10,7 @@ import com.intellij.xdebugger.XDebugSession
 import com.tang.intellij.lua.debugger.LogConsoleType
 import com.tang.intellij.lua.debugger.emmy.*
 import com.tang.intellij.lua.debugger.utils.FileUtils
-import java.io.BufferedReader
-import java.io.BufferedWriter
-import java.io.InputStreamReader
-import java.io.OutputStreamWriter
-import java.net.Socket
 import java.nio.charset.Charset
-import java.util.concurrent.ThreadLocalRandom
 
 
 class EmmyLaunchDebugProcess(
@@ -28,7 +22,7 @@ class EmmyLaunchDebugProcess(
     private var toolProcessHandler: ColoredProcessHandler? = null;
 
     override fun setupTransporter() {
-        LaunchDebug() { it ->
+        launchDebug() { it ->
             attachTo(it)
             Thread.sleep(300)
             toolProcessHandler?.let { tool ->
@@ -65,68 +59,7 @@ class EmmyLaunchDebugProcess(
         return if (exitValue == 0) EmmyWinArch.X64 else EmmyWinArch.X86
     }
 
-    private fun LaunchWithWindows() {
-        val port = getPort(ThreadLocalRandom.current().nextInt(10240) + 10240);
-        val arch = detectArch()
-        val path = FileUtils.getPluginVirtualFile("debugger/bin/win32-${arch}")
-        val re = Regex("[^/\\\\]+\$")
-        val mc = re.find(configuration.program)
-
-        val commandLine = GeneralCommandLine()
-        commandLine.exePath = "wt"
-        commandLine.setWorkDirectory(path)
-        commandLine.addParameters(
-            "--title",
-            if (mc != null) mc.groups[0]?.value else configuration.program,
-            "emmy_tool.exe",
-            "run_and_attach",
-            "-dll",
-            "emmy_hook.dll",
-            "-dir",
-            "\"${path}\"",
-            "-work",
-            "\"${configuration.workingDirectory}\"",
-            "-block-on-exit",
-            "-exe",
-            "\"${configuration.program}\"",
-            "-debug-port",
-            port.toString(),
-            "-listen-mode",
-            "-args",
-            "\"${configuration.parameter}\""
-        )
-
-        val handler = OSProcessHandler(commandLine)
-        handler.addProcessListener(object : ProcessListener {
-            override fun startNotified(processEvent: ProcessEvent) {
-            }
-
-            override fun processTerminated(processEvent: ProcessEvent) {
-            }
-
-            override fun processWillTerminate(processEvent: ProcessEvent, b: Boolean) {
-            }
-
-            override fun onTextAvailable(processEvent: ProcessEvent, key: Key<*>) {
-                when (key) {
-                    ProcessOutputTypes.STDERR -> print(
-                        processEvent.text,
-                        LogConsoleType.NORMAL,
-                        ConsoleViewContentType.ERROR_OUTPUT
-                    )
-
-                    ProcessOutputTypes.STDOUT -> print(
-                        processEvent.text,
-                        LogConsoleType.NORMAL,
-                        ConsoleViewContentType.SYSTEM_OUTPUT
-                    )
-                }
-            }
-        })
-        handler.startNotify()
-    }
-
-    private fun LaunchDebug(onConnected: (pid: Int) -> Unit) {
+    private fun launchDebug(onConnected: (pid: Int) -> Unit) {
         val arch = detectArch()
         val path = FileUtils.getPluginVirtualFile("debugger/bin/win32-${arch}")
 
@@ -147,7 +80,7 @@ class EmmyLaunchDebugProcess(
                 "-exe",
                 "\"${configuration.program}\"",
                 "-args",
-                "${configuration.parameter}"
+                configuration.parameter
             )
 
             charset = Charset.forName("utf8")
